@@ -1,66 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REAL 계산기</title>
 </head>
+
 <body>
     <div class="calculator">
         <input type="text" name="output" readonly="">
-<<<<<<< HEAD
-        <button class="btn" value="1" onclick="calculatorInput.btnInput(this)">1</button>
-        <button class="operator" value="+" onclick="calculatorInput.btnPlusInput(this)">+</button>
-        <button class="btn" value="2" onclick="calculatorInput.btnInput(this)">2</button>
+        <button class="btn" value="1" onclick="save.calcBefore.getBtnData(this)">1</button>
+        <button class="operator" value="+" onclick="save.calcBefore.getBtnData(this)">+</button>
+        <button class="btn" value="2" onclick="save.calcBefore.getBtnData(this)">2</button>
         <button class="operator_result" value="=" onclick="calculatorInput.btnResultInput(this)">=</button>
-=======
-        <button class="btn" value="1" onclick="save.calcBefore.getBtnData()">1</button>
-        <!-- <button class="btn1" value="1" onclick="calculatorInput.btn1Input()">1</button> -->
-        <button class="operator" value="+" onclick="calculatorInput.btnPlusInput()">+</button>
-        <button class="btn" value="2" onclick="calculatorInput.btn2Input()">2</button>
-        <button class="operator result" value="=" onclick="calculatorInput.btnResultInput()">=</button>
->>>>>>> 36d5b4746d67dc58b844b6d05c7b34b3c58da1b6
     </div>
     <script>
 
         // 계산기 버튼별 클릭시 onclick이벤트 실행 및 값 반환
         let calculatorInput = {
-<<<<<<< HEAD
-            btnInput : function(btn){
+            btnInput: function (btn) {
                 let buttonTag = btn.value;
                 document.getElementsByName("output")[0].value += buttonTag;
-                return(buttonTag);
+                return (buttonTag);
             },
-            btnPlusInput : function(operator){
+            btnPlusInput: function (operator) {
                 let buttonTag = operator.value;
-=======
-            btn1Input : function(){
-                let buttonTag = document.getElementsByClassName("btn")[0].value;
                 document.getElementsByName("output")[0].value += buttonTag;
-                return(buttonTag);
+                return (buttonTag);
             },
-            btn2Input : function(){
-                let buttonTag = document.getElementsByClassName("btn")[1].value;
->>>>>>> 36d5b4746d67dc58b844b6d05c7b34b3c58da1b6
-                document.getElementsByName("output")[0].value += buttonTag;
-                return(buttonTag);
-            },
-            btnResultInput : function(operator_result){
+            btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
                 document.getElementsByName("output")[0].value += buttonTag;
-                return(buttonTag);
+                return (buttonTag);
             }
         }
-<<<<<<< HEAD
-=======
 
-        // calculatorInput.btn1Input();
-        // calculatorInput.btn2Input();
-        // calculatorInput.btnPlusInput();
-        // calculatorInput.btnResultInput();
-
->>>>>>> 36d5b4746d67dc58b844b6d05c7b34b3c58da1b6
-        
         // 광훈오빠 입력 데이터 -> save에 저장
         // 저장값은 민규오빠가 출력할 때 사용할 것
 
@@ -68,8 +43,8 @@
         const save = {
             calcBefore: {
                 // 광훈오빠 객체 불러오기
-                getBtnData: function () {
-                    const data = calculatorInput.btn1Input(); // 광훈오빠 객체로부터 데이터를 가져온다고 가정
+                getBtnData: function (btn) {
+                    const data = calculatorInput.btnInput(btn); // 광훈오빠 객체로부터 데이터를 가져온다고 가정
                     this.saveInArr(data); // saveInArr 함수 실행
                 },
 
@@ -78,14 +53,8 @@
 
                 saveInArr: function (data) {
                     this.saveArr.push(data)
-                    // this.printArr();
                     this.saveInLocalStorage();
                 },
-
-                // test용
-                // printArr: function () {
-                //     console.log(this.saveArr)
-                // },
 
                 // 로컬스트리지에 저장하려면 배열->스트링 변화 필요
                 changeTypeToSaveLocalStorage: function () {
@@ -112,14 +81,8 @@
 
                 saveInArr: function (data) {
                     this.saveArr.push(data)
-                    // this.printArr();
                     this.saveInLocalStorage();
                 },
-
-                // test용
-                // printArr: function () {
-                //     console.log(this.saveArr)
-                // },
 
                 // 로컬스트리지에 저장하려면 배열->스트링 변화 필요
                 changeTypeToSaveLocalStorage: function () {
@@ -137,4 +100,5 @@
 
     </script>
 </body>
+
 </html>
