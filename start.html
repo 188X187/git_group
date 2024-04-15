@@ -5,11 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REAL 계산기</title>
+
+    <style>
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div {
+            background-color: gray;
+            width: 200px;
+            height: 250px;
+            display: grid;
+            grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+            padding: 5px;
+            gap: 5px;
+        }
+
+        input {
+            grid-row: 1;
+            grid-column: 1 / -1;
+        }
+
+        .btn {
+            grid-row: 2;
+        }
+
+        .operator {
+            grid-row: 3;
+        }
+
+        .operator_result {
+            grid-row: 3;
+        }
+    </style>
+
 </head>
 
 <body>
     <div class="calculator">
-        <input type="text" name="output" readonly="">
+        <input type="text" name="display" id="mj" readonly="">
         <button class="btn" value="1" onclick="save.calcBefore.getBtnData(this)">1</button>
         <button class="operator" value="+" onclick="save.calcBefore.getBtnData(this)">+</button>
         <button class="btn" value="2" onclick="save.calcBefore.getBtnData(this)">2</button>
@@ -21,17 +58,14 @@
         let calculatorInput = {
             btnInput: function (btn) {
                 let buttonTag = btn.value;
-                document.getElementsByName("output")[0].value += buttonTag;
                 return (buttonTag);
             },
             btnPlusInput: function (operator) {
                 let buttonTag = operator.value;
-                document.getElementsByName("output")[0].value += buttonTag;
                 return (buttonTag);
             },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
-                document.getElementsByName("output")[0].value += buttonTag;
                 return (buttonTag);
             }
         }
@@ -67,7 +101,8 @@
                     const string = this.changeTypeToSaveLocalStorage();
                     window.localStorage.setItem("calcBefore", string);
 
-                    printout.getNum();
+                    // 버튼 누른 값 출력
+                    printout.disPrint();
                 }
             },
 
@@ -97,6 +132,21 @@
                     const string = this.changeTypeToSaveLocalStorage();
                     window.localStorage.setItem("calcAfter", string);
                 }
+            }
+        }
+
+        // 출력 객체
+        const printout = {
+            // 배열에서 값 가져오기
+            getNum: function () {
+                const test = save.calcBefore.saveArr.join('');      // 배열 문자열로 바꿈
+                return test;
+            },
+
+            // 가져온 값 인풋에 넣기
+            disPrint: function () {
+                let input = document.getElementById("mj");
+                input.value = this.getNum();
             }
         }
 
