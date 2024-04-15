@@ -11,7 +11,8 @@ const save = {
         },
         
         // data 배열에 저장
-        saveArr : [], // 빈 배열 만들기
+        saveArr : [], // 빈 배열 만들기e : function(){
+            const string = JSON.str
     
         saveInArr : function(data){
             this.saveArr.push(data)
@@ -25,8 +26,7 @@ const save = {
         },
     
 /*         // 로컬스트리지에 저장하려면 배열->스트링 변화 필요
-        changeTypeToSaveLocalStorage : function(){
-            const string = JSON.stringify(this.saveArr);
+        changeTypeToSaveLocalStoragingify(this.saveArr);
             return string;
         },
     
