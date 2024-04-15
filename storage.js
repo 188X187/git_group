@@ -16,7 +16,7 @@ const save = {
         saveInArr : function(data){
             this.saveArr.push(data)
             this.printArr();
-            // this.saveInLocalStorage();
+            this.saveInLocalStorage();
         },
         
         // test용
@@ -24,7 +24,7 @@ const save = {
             console.log(this.saveArr)
         },
     
-/*         // 로컬스트리지에 저장하려면 배열->스트링 변화 필요
+        // 로컬스트리지에 저장하려면 배열->스트링 변화 필요
         changeTypeToSaveLocalStorage : function(){
             const string = JSON.stringify(this.saveArr);
             return string;
@@ -34,7 +34,7 @@ const save = {
         saveInLocalStorage : function(){
             const string = this.changeTypeToSaveLocalStorage();
             window.localStorage.setItem("calcBefore", string);
-        } */
+        }
     },
 
     calcAfter : { 
@@ -50,7 +50,7 @@ const save = {
         saveInArr : function(data){
             this.saveArr.push(data)
             this.printArr();
-            // this.saveInLocalStorage();
+            this.saveInLocalStorage();
         },
         
         // test용
@@ -58,7 +58,7 @@ const save = {
             console.log(this.saveArr)
         },
     
-/*         // 로컬스트리지에 저장하려면 배열->스트링 변화 필요
+        // 로컬스트리지에 저장하려면 배열->스트링 변화 필요
         changeTypeToSaveLocalStorage : function(){
             const string = JSON.stringify(this.saveArr);
             return string;
@@ -68,7 +68,7 @@ const save = {
         saveInLocalStorage : function(){
             const string = this.changeTypeToSaveLocalStorage();
             window.localStorage.setItem("calcAfter", string);
-        } */
+        }
     }
 }
 
