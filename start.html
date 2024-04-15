@@ -66,6 +66,8 @@
                 saveInLocalStorage: function () {
                     const string = this.changeTypeToSaveLocalStorage();
                     window.localStorage.setItem("calcBefore", string);
+
+                    printout.getNum();
                 }
             },
 
