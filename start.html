@@ -11,46 +11,31 @@
 <body>
     <div class="calculator">
         <input type="text" name="output" readonly="">
-        <button class="btn1" value="1" onclick="calculatorInput.btn1Input()">1</button>
-        <button class="operator" value="+" onclick="calculatorInput.btnPlusInput()">+</button>
-        <button class="btn2" value="2" onclick="calculatorInput.btn2Input()">2</button>
-        <button class="operator result" value="=" onclick="calculatorInput.btnResultInput()">=</button>
+        <button class="btn" value="1" onclick="calculatorInput.btnInput(this)">1</button>
+        <button class="operator" value="+" onclick="calculatorInput.btnPlusInput(this)">+</button>
+        <button class="btn" value="2" onclick="calculatorInput.btnInput(this)">2</button>
+        <button class="operator_result" value="=" onclick="calculatorInput.btnResultInput(this)">=</button>
     </div>
     <script>
-        // 페이지 접속 및 새로고침시, input창 초기화
-        window.onload = function() {
-            document.getElementsByName("output")[0].value = "";
-        }
 
         // 계산기 버튼별 클릭시 onclick이벤트 실행 및 값 반환
         let calculatorInput = {
-            btn1Input : function(){
-                let buttonTag = document.getElementsByClassName("btn1")[0].value;
+            btnInput : function(btn){
+                let buttonTag = btn.value;
                 document.getElementsByName("output")[0].value += buttonTag;
                 return(buttonTag);
             },
-            btn2Input : function(){
-                let buttonTag = document.getElementsByClassName("btn2")[0].value;
+            btnPlusInput : function(operator){
+                let buttonTag = operator.value;
                 document.getElementsByName("output")[0].value += buttonTag;
                 return(buttonTag);
             },
-            btnPlusInput : function(){
-                let buttonTag = document.getElementsByClassName("operator")[0].value;
-                document.getElementsByName("output")[0].value += buttonTag;
-                return(buttonTag);
-            },
-            btnResultInput : function(){
-                let buttonTag = document.getElementsByClassName("operator result")[0].value;
+            btnResultInput : function(operator_result){
+                let buttonTag = operator_result.value;
                 document.getElementsByName("output")[0].value += buttonTag;
                 return(buttonTag);
             }
         }
-
-        calculatorInput.btn1Input();
-        calculatorInput.btn2Input();
-        calculatorInput.btnPlusInput();
-        calculatorInput.btnResultInput();
-
         
     </script>
 </body>
