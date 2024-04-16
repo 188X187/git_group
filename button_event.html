@@ -144,26 +144,26 @@
         let calculatorInput = {
             btnInput: function (btn) {
                 let buttonTag = btn.value;
-                // document.getElementsByName("output")[0].value += buttonTag;
+                document.getElementsByName("output")[0].value += buttonTag;
                 // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
             },
             btnPlusInput: function (operator) {
                 let buttonTag = operator.value;
-                // document.getElementsByName("output")[0].value += buttonTag;
+                document.getElementsByName("output")[0].value += buttonTag;
                 // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
             },
             btnClearInput: function (operator_Clear) {
                 let buttonTag = operator_Clear.value;
-                // document.getElementsByName("output")[0].value = '';
+                document.getElementsByName("output")[0].value = '';
                 // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
 
             },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
-                // document.getElementsByName("output")[0].value += buttonTag;
+                document.getElementsByName("output")[0].value += buttonTag;
                 // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
             }
