@@ -119,16 +119,15 @@
             
             createNumPad() {
                 for(let i = 0; i <= 9; i++){
-                    // super.createNode('button', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'save.calcBefore.getBtnData(this)');
                     super.createNode('button', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'calculatorInput.btnInput(this)');
                 }
             }
             createOperator() {
-                super.createNode('button', '', '', '*', '*', 'operator', 'onclick', 'save.calcBefore.getBtnData(this)');
-                super.createNode('button', '', '', '/', '/', 'operator', 'onclick', 'save.calcBefore.getBtnData(this)');
-                super.createNode('button', '', '', '-', '-', 'operator', 'onclick', 'save.calcBefore.getBtnData(this)');
-                super.createNode('button', '', '', '+', '+', 'operator', 'onclick', 'save.calcBefore.getBtnData(this)');
-                super.createNode('button', '', '', ' ', 'C', 'operator_Clear', 'onclick', 'calculatorInput.btnResultInput(this)');
+                super.createNode('button', '', '', '*', '*', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
+                super.createNode('button', '', '', '/', '/', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
+                super.createNode('button', '', '', '-', '-', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
+                super.createNode('button', '', '', '+', '+', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
+                super.createNode('button', '', '', ' ', 'C', 'operator_Clear', 'onclick', 'calculatorInput.btnClearInput(this)');
                 super.createNode('button', '', '', '=', '=', 'operator_result', 'onclick', 'calculatorInput.btnResultInput(this)');
             }
 
@@ -151,18 +150,22 @@
             },
             btnPlusInput: function (operator) {
                 let buttonTag = operator.value;
-                document.getElementsByName("output")[0].value += buttonTag;
-                return (buttonTag);
+                // document.getElementsByName("output")[0].value += buttonTag;
+                // return (buttonTag);
+                save.calcBefore.getBtnData(buttonTag)
             },
             btnClearInput: function (operator_Clear) {
                 let buttonTag = operator_Clear.value;
-                document.getElementsByName("output")[0].value = '';
-                return (buttonTag);
+                // document.getElementsByName("output")[0].value = '';
+                // return (buttonTag);
+                save.calcBefore.getBtnData(buttonTag)
+
             },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
-                document.getElementsByName("output")[0].value += buttonTag;
-                return (buttonTag);
+                // document.getElementsByName("output")[0].value += buttonTag;
+                // return (buttonTag);
+                save.calcBefore.getBtnData(buttonTag)
             }
         }
         
