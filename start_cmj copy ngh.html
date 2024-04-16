@@ -32,9 +32,9 @@
             display: grid;
             grid-template-columns: repeat(4, 65px);
             grid-auto-rows: 65px;
-            grid-gap:5px;
+            grid-gap: 5px;
         }
-        
+
         .Calculator button,
         .Calculator input {
             border: 2px solid #333;
@@ -42,42 +42,52 @@
             font-size: 20px;
             font-weight: bold;
         }
-        
+
         .Calculator button:hover,
         .Calculator input:hover {
             box-shadow: 1px 1px 2px #333;
         }
-        
+
         .Calculator .operator {
             background-color: khaki;
         }
+
         .Calculator .operator_Clear {
             background-color: chocolate;
         }
-        .Calculator input[type='text']{
+
+        .Calculator input[type='text'] {
             grid-area: 1 / 5 / 1 / 1;
             text-align: right;
             padding: 0 10px;
         }
-        .operator_Clear{
-            grid-area: 2 / 4 / 2 / 1;;
+
+        .operator_Clear {
+            grid-area: 2 / 4 / 2 / 1;
+            ;
         }
-        .Calculator button[value='/']{
+
+        .Calculator button[value='/'] {
             grid-area: 2 / 5 / 2 / 4;
         }
-        .Calculator button[value='*']{
+
+        .Calculator button[value='*'] {
             grid-area: 3 / 5 / 3 / 4;
         }
-        .Calculator button[value='+']{
+
+        .Calculator button[value='+'] {
             grid-area: 4 / 5 / 4 / 4;
         }
-        .Calculator button[value='-']{
+
+        .Calculator button[value='-'] {
             grid-area: 5 / 5 / 5 / 4;
         }
-        .Calculator button[value='0']{
+
+        .Calculator button[value='0'] {
             grid-area: 6 / 2 / 6 / 3;
         }
-        .Calculator button[value='=']{
+
+        .Calculator button[value='='] {
             grid-area: 6 / 3 / 6 / 5;
         }
     </style>
@@ -109,16 +119,16 @@
         }
         // 계산기 DOM - node Generator(생성기)
         class NodeGenerator extends Calculator {
-            constructor(){
+            constructor() {
                 super("div", "Calculator");
             }
-            
+
             createInputDisplay() {
                 super.createNode('input', 'text', 'output', '', '', '', 'readonly', '');
             }
-            
+
             createNumPad() {
-                for(let i = 0; i <= 9; i++){
+                for (let i = 0; i <= 9; i++) {
                     super.createNode('button', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'calculatorInput.btnInput(this)');
                 }
             }
@@ -127,7 +137,7 @@
                 super.createNode('button', '', '', '/', '/', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
                 super.createNode('button', '', '', '-', '-', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
                 super.createNode('button', '', '', '+', '+', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
-                super.createNode('button', '', '', ' ', 'C', 'operator_Clear', 'onclick', 'calculatorInput.btnClearInput(this)');
+                super.createNode('button', '', '', ' ', 'AC', 'operator_Clear', 'onclick', 'calculatorInput.btnClearInput(this)');
                 super.createNode('button', '', '', '=', '=', 'operator_result', 'onclick', 'calculatorInput.btnResultInput(this)');
             }
 
@@ -144,31 +154,32 @@
         let calculatorInput = {
             btnInput: function (btn) {
                 let buttonTag = btn.value;
-                document.getElementsByName("output")[0].value += buttonTag;
-                return (buttonTag);
+                // document.getElementsByName("output")[0].value += buttonTag;
+                // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
             },
             btnPlusInput: function (operator) {
                 let buttonTag = operator.value;
-                document.getElementsByName("output")[0].value += buttonTag;
-                return (buttonTag);
+                // document.getElementsByName("output")[0].value += buttonTag;
                 save.calcBefore.getBtnData(buttonTag)
+                return buttonTag;
             },
             btnClearInput: function (operator_Clear) {
                 let buttonTag = operator_Clear.value;
-                document.getElementsByName("output")[0].value = '';
+                // document.getElementsByName("output")[0].value = '';
                 // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
-
             },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
-                document.getElementsByName("output")[0].value += buttonTag;
+                // document.getElementsByName("output")[0].value += buttonTag;
                 // return (buttonTag);
-                save.calcBefore.getBtnData(buttonTag)
+                verification.operator_Cal(buttonTag)
             }
         }
+
         
+
         // 광훈오빠 입력 데이터 -> save에 저장
         // 저장값은 민규오빠가 출력할 때 사용할 것
 
@@ -200,6 +211,9 @@
                 saveInLocalStorage: function () {
                     const string = this.changeTypeToSaveLocalStorage();
                     window.localStorage.setItem("calcBefore", string);
+
+                    // 배열에 있는 값 출력
+                    printout.disPrint(save.calcBefore.saveArr);
                 }
             },
 
@@ -228,12 +242,14 @@
                 saveInLocalStorage: function () {
                     const string = this.changeTypeToSaveLocalStorage();
                     window.localStorage.setItem("calcAfter", string);
+
                 }
             }
         }
 
+        // 연산 
         let verification = {
-                numFirst: function () {
+                division: function () {
                     let num1 = "";
                     let num2 = "";
                     let operatorFound = false;
@@ -250,11 +266,62 @@
                             }
                         }
                     });
-
                     return { num1, num2 };
                 },
 
-            };
+                operator_Cal : function() {
+
+                    let num1 = Number(verification.division().num1);
+                    let num2 = Number(verification.division().num2);
+                    let result;
+                    save.calcBefore.saveArr.forEach(item => {
+                    if(item === "+" || item === "-" || item === "*" || item === "/") {
+                        switch(item) {
+
+                            case "+":
+                                result = num1 + num2; // 결과값 반환하고 함수 실행 종료
+                                break;
+                            case "-":
+                                result = num1 - num2;
+                                break;
+                            case "*":
+                                result = num1 * num2;
+                                break;
+                            case "/":
+                                if (num2 !== 0) {
+                                    result = num1 / num2;
+                                } else {
+                                    result = "0으로 나눌 수 없습니다"
+                                }
+                                break;
+                            default:
+                                alert("잘못된 연산입니다."); // 잘못 입력 시
+                                break;
+                        }
+                       save.calcAfter.getCalcData(result);
+                    }
+                });      
+            }
+        }
+
+
+
+
+        // 출력 객체
+        const printout = {
+            // 배열에서 값 가져오기
+            getNum: function (data) {
+                // const test = save.calcBefore.saveArr.join('');      // 배열 문자열로 바꿈
+                const test = data.join('');      // 배열 문자열로 바꿈
+                return test;
+            },
+
+            // 가져온 값 인풋에 넣기
+            disPrint: function (data) {
+                let input = document.getElementsByName("output")[0];
+                input.value = this.getNum(data);
+            }
+        }
 
     </script>
 </body>
