@@ -137,7 +137,7 @@
                 super.createNode('button', '', '', '/', '/', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
                 super.createNode('button', '', '', '-', '-', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
                 super.createNode('button', '', '', '+', '+', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
-                super.createNode('button', '', '', ' ', 'AC', 'operator_Clear', 'onclick', 'calculatorInput.btnClearInput(this)');
+                super.createNode('button', '', '', '', 'AC', 'operator_Clear', 'onclick', 'calculatorInput.btnClearInput(this)');
                 super.createNode('button', '', '', '=', '=', 'operator_result', 'onclick', 'calculatorInput.btnResultInput(this)');
             }
 
@@ -166,9 +166,7 @@
             },
             btnClearInput: function (operator_Clear) {
                 let buttonTag = operator_Clear.value;
-                // document.getElementsByName("output")[0].value = '';
-                // return (buttonTag);
-                save.calcBefore.getBtnData(buttonTag)
+                save.calcBefore.resetArr(buttonTag)
             },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
@@ -201,6 +199,11 @@
                     this.saveInLocalStorage();
                 },
 
+                resetArr: function (data) {
+                    this.saveArr = [];
+                    this.saveInLocalStorage();
+                },
+                
                 // 로컬스트리지에 저장하려면 배열->스트링 변화 필요
                 changeTypeToSaveLocalStorage: function () {
                     const string = JSON.stringify(this.saveArr);
