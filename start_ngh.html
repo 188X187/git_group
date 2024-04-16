@@ -119,7 +119,8 @@
             
             createNumPad() {
                 for(let i = 0; i <= 9; i++){
-                    super.createNode('button', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'save.calcBefore.getBtnData(this)');
+                    // super.createNode('button', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'save.calcBefore.getBtnData(this)');
+                    super.createNode('button', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'calculatorInput.btnInput(this)');
                 }
             }
             createOperator() {
@@ -144,8 +145,9 @@
         let calculatorInput = {
             btnInput: function (btn) {
                 let buttonTag = btn.value;
-                document.getElementsByName("output")[0].value += buttonTag;
-                return (buttonTag);
+                // document.getElementsByName("output")[0].value += buttonTag;
+                // return (buttonTag);
+                save.calcBefore.getBtnData(buttonTag)
             },
             btnPlusInput: function (operator) {
                 let buttonTag = operator.value;
@@ -172,7 +174,8 @@
             calcBefore: {
                 // 광훈오빠 객체 불러오기
                 getBtnData: function (btn) {
-                    const data = calculatorInput.btnInput(btn); // 광훈오빠 객체로부터 데이터를 가져온다고 가정
+                    // const data = calculatorInput.btnInput(btn); // 광훈오빠 객체로부터 데이터를 가져온다고 가정
+                    const data = btn; // 광훈오빠 객체로부터 데이터를 가져온다고 가정
                     this.saveInArr(data); // saveInArr 함수 실행
                 },
 
