@@ -137,7 +137,7 @@
                 super.createNode('button', '', '', '/', '/', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
                 super.createNode('button', '', '', '-', '-', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
                 super.createNode('button', '', '', '+', '+', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
-                super.createNode('button', '', '', ' ', 'AC', 'operator_Clear', 'onclick', 'calculatorInput.btnClearInput(this)');
+                super.createNode('button', '', '', '', 'AC', 'operator_Clear', 'onclick', 'calculatorInput.btnClearInput(this)');
                 super.createNode('button', '', '', '=', '=', 'operator_result', 'onclick', 'calculatorInput.btnResultInput(this)');
             }
 
@@ -154,26 +154,18 @@
         let calculatorInput = {
             btnInput: function (btn) {
                 let buttonTag = btn.value;
-                // document.getElementsByName("output")[0].value += buttonTag;
-                // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
             },
             btnPlusInput: function (operator) {
                 let buttonTag = operator.value;
-                // document.getElementsByName("output")[0].value += buttonTag;
-                // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
             },
             btnClearInput: function (operator_Clear) {
                 let buttonTag = operator_Clear.value;
-                // document.getElementsByName("output")[0].value = '';
-                // return (buttonTag);
-                save.calcBefore.getBtnData(buttonTag)
+                save.calcBefore.resetArr(buttonTag)
             },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
-                // document.getElementsByName("output")[0].value += buttonTag;
-                // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
             }
         }
@@ -186,7 +178,6 @@
             calcBefore: {
                 // 광훈오빠 객체 불러오기
                 getBtnData: function (btn) {
-                    // const data = calculatorInput.btnInput(btn); // 광훈오빠 객체로부터 데이터를 가져온다고 가정
                     const data = btn; // 광훈오빠 객체로부터 데이터를 가져온다고 가정
                     this.saveInArr(data); // saveInArr 함수 실행
                 },
@@ -196,6 +187,11 @@
 
                 saveInArr: function (data) {
                     this.saveArr.push(data)
+                    this.saveInLocalStorage();
+                },
+
+                resetArr: function (data) {
+                    this.saveArr = [];
                     this.saveInLocalStorage();
                 },
 
