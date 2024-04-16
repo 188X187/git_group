@@ -1,14 +1,9 @@
-import {  } from "./button"; // 광훈오빠
-// import { ??? } from "./계산"; // 민규오빠
-
-// 광훈오빠 입력 데이터 -> save에 저장
-// 저장값은 민규오빠가 출력할 때 사용할 것
-
 // 저장
-const save = {
+export const save = {
     calcBefore: {
         // 광훈오빠 객체 불러오기
         getBtnData: function (btn) {
+            // const data = calculatorInput.btnInput(btn); // 광훈오빠 객체로부터 데이터를 가져온다고 가정
             const data = btn; // 광훈오빠 객체로부터 데이터를 가져온다고 가정
             this.saveInArr(data); // saveInArr 함수 실행
         },
@@ -38,14 +33,14 @@ const save = {
             window.localStorage.setItem("calcBefore", string);
 
             // 배열에 있는 값 출력
-            printout.disPrint(save.calcBefore.saveArr);
+            // printout.disPrint(save.calcBefore.saveArr);
         }
     },
 
     calcAfter: {
         // 민규오빠 객체 불러오기
-        getCalcData: function (result) {
-            const data = result; //
+        getCalcData: function (test) {
+            const data = test; // 광훈오빠 객체로부터 데이터를 가져온다고 가정
             this.saveInArr(data); // saveInArr 함수 실행
         },
 
@@ -74,8 +69,8 @@ const save = {
             window.localStorage.setItem("calcAfter", string);
 
             // 배열에 있는 값 출력
-            printout.disPrint(save.calcAfter.saveArr);
+            // printout.disPrint(save.calcAfter.saveArr);
 
         }
     }
-}
+};

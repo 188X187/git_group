@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼~>숫자생성(생성자함수)</title>
+    <script>
+        window.onload = function () {
+            let divMake = document.createElement("div");
+            divMake.id = "printBox";
+            document.body.appendChild(divMake);
+
+            // 버튼 만들기
+            let btn1 = new Button(1);
+            btn1.perfectBtn();
+            btn1.event();
+
+            let btn2 = new Button(2);
+            btn2.perfectBtn();
+            btn2.event();
+
+            let btn3 = new Button(3);
+            btn3.perfectBtn();
+            btn3.event();
+
+            let btn4 = new Button(4);
+            btn4.perfectBtn();
+            btn4.event();
+
+            let btn5 = new Button(5);
+            btn5.perfectBtn();
+            btn5.event();
+        }
+
+        // 버튼 생성자함수
+        function Button(num) {
+
+            // 버튼 노드 생성
+            this.perfectBtn = function () {
+                let btnMake = document.createElement("button");
+                btnMake.id = `btn${num}`;
+                let btnText = document.createTextNode(num);
+
+                btnMake.appendChild(btnText);
+                document.body.appendChild(btnMake);
+            }
+
+            // 클릭 이벤트 추가
+            this.event = function () {
+                let text = "";
+                document.getElementById(`btn${num}`).addEventListener("", function () {
+
+                    let printBox = document.getElementById("printBox").innerHTML;
+                    printBox = num + " ";
+                });
+                // }
+            };
+        }
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

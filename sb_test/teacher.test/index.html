@@ -96,71 +96,44 @@
 </head>
 
 <body>
-    <script>
-        // 계산기 DOM - node 생성 클래스(기본틀)
-        /*
-        class 매개변수 설명
-        Elem = tag명
-        typ = tag의 type 속성
-        valu = tag의 value
-        text = tag의 text 입력
-        ClsN = tag의 className
-        attr = tag의 Atrribute
-        wage = tag의 Atrribute의 값
-        */
-        class ParentsGenerator {
-            constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {
-                this.tagNode1 = document.createElement(Elem);
-                this.tagNode1.value = valu;
-                this.tagNode1.className = ClsN;
-                this.tagNode1.type = typ;
-                this.tagNode1.name = nam;
-                this.tagNode1.setAttribute(attr, wage);
-                this.PadText = document.createTextNode(text);
-                this.tagNode1.appendChild(this.PadText);
-            };
-        };
+    <script type="module">
+        import Calculator from "./calculator.js"
 
         // 계산기 DOM - node Generator(생성기)
-        class DivTag extends ParentsGenerator {
-            constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {
-                super('div', typ, nam, valu, text, 'Calculator', 'Attribute', wage);
-                document.body.appendChild(this.tagNode1);
-            };
-        };
-        class InputTag extends ParentsGenerator {
-            constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {
-                super('input', 'text', 'output', valu, text, ClsN, 'Attribute', wage);
-                activeDiv.tagNode1.appendChild(this.tagNode1);
-            };
-        };
-        class ButtonTag extends ParentsGenerator {
-            constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {
-                super('button', typ, nam, valu, text, ClsN, attr, wage);
-                activeDiv.tagNode1.appendChild(this.tagNode1);
-            };
-        };
+        class NodeGenerator extends Calculator {
+            constructor() {
+                super("div", "Calculator");
+            }
 
-        const activeDiv = new DivTag('', '', '', '', '', '', '', '');
-        const activeInput = new InputTag('', '', '', '', '', '', '', '');
+            createInputDisplay() {
+                super.createNode('input', 'text', 'output', '', '', '', 'readonly', '');
+            }
 
-        for (let i = 0; i <= 9; i++) {
-            const activeNumBtn = new ButtonTag('', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'calculatorInput.btnInput(this)');
-        };
+            createNumPad() {
+                for (let i = 0; i <= 9; i++) {
+                    super.createNode('button', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'calculatorInput.btnInput(this)');
+                }
+            }
+            createOperator() {
+                super.createNode('button', '', '', '*', '*', 'operator', 'onclick', 'console.log(e.target)');
+                super.createNode('button', '', '', '/', '/', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
+                super.createNode('button', '', '', '-', '-', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
+                super.createNode('button', '', '', '+', '+', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)');
+                super.createNode('button', '', '', '', 'AC', 'operator_Clear', 'onclick', 'calculatorInput.btnClearInput(this)');
+                super.createNode('button', '', '', '=', '=', 'operator_result', 'onclick', 'calculatorInput.btnResultInput(this)');
+            }
 
-        const activeOperatorBtn = [];
-        activeOperatorBtn.push(
-            new ButtonTag('', '', '', '+', '+', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '-', '-', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '/', '/', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '*', '*', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '', 'AC', 'operator_Clear', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '=', '=', 'operator_result', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-        );
+        }
+
+        const extendedCal = new NodeGenerator();
+        extendedCal.createInputDisplay()
+        extendedCal.createNumPad();
+        extendedCal.createOperator();
+
 
 
         // 계산기 버튼별 클릭시 onclick이벤트 실행 및 값 반환
-        let calculatorInput = {
+        export let calculatorInput = {
             btnInput: function (btn) {
                 let buttonTag = btn.value;
                 // document.getElementsByName("output")[0].value += buttonTag;
@@ -175,13 +148,16 @@
             },
             btnClearInput: function (operator_Clear) {
                 let buttonTag = operator_Clear.value;
-                save.calcBefore.resetArr(buttonTag)
-                save.calcAfter.resetArr(buttonTag)
+                save.calcBefore.resetArr(buttonTag);
+                save.calcAfter.resetArr(buttonTag);
             },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
                 // document.getElementsByName("output")[0].value += buttonTag;
                 // return (buttonTag);
+
+                // =을 누르면 계산 후 배열 초기화
+                save.calcAfter.saveArr = [];
                 verification.operator_Cal(buttonTag)
             }
         }
@@ -298,6 +274,7 @@
                 save.calcBefore.saveArr.forEach(item => {
                     if (item === "+" || item === "-" || item === "*" || item === "/") {
                         switch (item) {
+
                             case "+":
                                 result = num1 + num2; // 결과값 반환하고 함수 실행 종료
                                 break;
