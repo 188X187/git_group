@@ -98,7 +98,7 @@
     <script>
         // 계산기 DOM - node 생성 클래스(기본틀)
         /*
-        class 매개변수 설명
+        ★★★ class 매개변수 설명 ★★★
         Elem = tag명
         typ = tag의 type 속성
         valu = tag의 value
@@ -121,7 +121,7 @@
         };
 
         // 계산기 DOM - node Generator(생성기)
-        class DivTag extends ParentsGenerator {
+        class DivTag extends ParentsGeneator {
             constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {
                 super('div', typ, nam, valu, text, 'Calculator', 'Attribute', wage);
                 document.body.appendChild(this.tagNode1);
@@ -144,29 +144,29 @@
         const activeInput = new InputTag('', '', '', '', '', '', '', '');
 
         for (let i = 0; i <= 9; i++) {
-            const activeNumBtn = new ButtonTag('', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'calculatorInput.btnInput(this)');
+            const activeNumBtn = new ButtonTag('', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'calculatorInput.btnNumInput(this)');
         };
 
         const activeOperatorBtn = [];
         activeOperatorBtn.push(
-            new ButtonTag('', '', '', '+', '+', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '-', '-', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '/', '/', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '*', '*', 'operator', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '', 'AC', 'operator_Clear', 'onclick', 'calculatorInput.btnPlusInput(this)'),
-            new ButtonTag('', '', '', '=', '=', 'operator_result', 'onclick', 'calculatorInput.btnPlusInput(this)'),
+            new ButtonTag('', '', '', '+', '+', 'operator', 'onclick', 'calculatorInput.btnOperatorInput(this)'),
+            new ButtonTag('', '', '', '-', '-', 'operator', 'onclick', 'calculatorInput.btnOperatorInput(this)'),
+            new ButtonTag('', '', '', '/', '/', 'operator', 'onclick', 'calculatorInput.btnOperatorInput(this)'),
+            new ButtonTag('', '', '', '*', '*', 'operator', 'onclick', 'calculatorInput.btnOperatorInput(this)'),
+            new ButtonTag('', '', '', '', 'AC', 'operator_Clear', 'onclick', 'calculatorInput.btnClearInput(this)'),
+            new ButtonTag('', '', '', '=', '=', 'operator_result', 'onclick', 'calculatorInput.btnResultInput(this)'),
             );
 
 
         // 계산기 버튼별 클릭시 onclick이벤트 실행 및 값 반환
         let calculatorInput = {
-            btnInput: function (btn) {
+            btnNumInput: function (btn) {
                 let buttonTag = btn.value;
                 // document.getElementsByName("output")[0].value += buttonTag;
                 // return (buttonTag);
                 save.calcBefore.getBtnData(buttonTag)
             },
-            btnPlusInput: function (operator) {
+            btnOperatorInput: function (operator) {
                 let buttonTag = operator.value;
                 // document.getElementsByName("output")[0].value += buttonTag;
                 save.calcBefore.getBtnData(buttonTag)
