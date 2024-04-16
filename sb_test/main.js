@@ -3,25 +3,17 @@ import { save } from "./save.js";
 import { verification } from "./calc.js"
 import { printout } from "./printout.js";
 
-// =============[저장]=============
-// 1.계산 전 저장 
-let btnData = "1+2"; // 버튼(광훈)으로부터 오는 값이 1일 때,
-let calcBeforeData = save.calcBefore.saveStep(btnData);
+let btnData, calcBeforeData, calcAfterData, printoutData
+// =============[연산 전]=============
+btnData = "1"; // 버튼 실행 (버튼으로부터 값 발생(1이라고 가정))
+calcBeforeData = save.calcBefore.saveStep(btnData); // 저장 실행
+printoutData = printout.disPrint(calcBeforeData); // 출력 실행
+console.log(printoutData); // 출력 테스트
 
-// 2.계산 후 저장
-let calcData = "3" // 연산(민규)으로부터 오는 값이 3일 때,
-let calcAfterData = save.calcAfter.saveStep(calcData);
 
-// =============[연산]=============
-let test = verification.calcStep(calcBeforeData); 
-console.log(test);
-
-// =============[출력]=============
-// 1. 계산 전 출력
-let printoutData 
-printoutData = printout.disPrint(calcBeforeData);
-console.log(printoutData);
-
-//2. 계산 후 출력
-printoutData = printout.disPrint(calcAfterData);
-console.log(printoutData);
+// =============[연산 후]=============
+btnData = "="; // 버튼 실행 (버튼으로부터 값 발생(=이라고 가정))
+let test = verification.calcStep(calcBeforeData); // 연산 실행
+calcAfterData = save.calcAfter.saveStep(test); // 저장 실행
+printoutData = printout.disPrint(calcAfterData); // 출력 실행
+console.log(printoutData); // 출력 테스트

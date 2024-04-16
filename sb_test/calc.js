@@ -1,7 +1,8 @@
 // 연산 
 import { save } from "./save.js";
-const calcBeforeData = save.calcBefore.saveStep(btnData);
-const input = calcBeforeData;
+// const btnData = "0"
+// const data = save.calcBefore.saveStepForCalc(btnData);
+// const input = data;
 
 export let verification = {
     division: function (input) {

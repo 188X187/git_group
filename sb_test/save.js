@@ -41,6 +41,13 @@ export const save = {
             const input5 = this.saveInLocalStorage(input4);
             return input5
         },
+
+        // // 계산 전 저장 로직 실행(배열까지) 
+        // saveStepForCalc : function(input1){
+        //     const input2 = this.getBtnData(input1);
+        //     const input3 = this.saveInArr(input2);
+        //     return input3
+        // },
     },
 
     calcAfter: {
