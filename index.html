@@ -166,12 +166,16 @@
             },
             btnClearInput: function (operator_Clear) {
                 let buttonTag = operator_Clear.value;
-                save.calcBefore.resetArr(buttonTag)
+                save.calcBefore.resetArr(buttonTag);
+                save.calcAfter.resetArr(buttonTag);
             },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
                 // document.getElementsByName("output")[0].value += buttonTag;
                 // return (buttonTag);
+
+                // =을 누르면 계산 후 배열 초기화
+                save.calcAfter.saveArr = [];
                 verification.operator_Cal(buttonTag)
             }
         }
@@ -232,6 +236,11 @@
 
                 saveInArr: function (data) {
                     this.saveArr.push(data)
+                    this.saveInLocalStorage();
+                },
+
+                resetArr: function (data) {
+                    this.saveArr = [];
                     this.saveInLocalStorage();
                 },
 

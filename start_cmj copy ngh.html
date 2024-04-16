@@ -167,6 +167,7 @@
             btnClearInput: function (operator_Clear) {
                 let buttonTag = operator_Clear.value;
                 save.calcBefore.resetArr(buttonTag)
+                save.calcAfter.resetArr(buttonTag)
             },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
@@ -232,6 +233,11 @@
 
                 saveInArr: function (data) {
                     this.saveArr.push(data)
+                    this.saveInLocalStorage();
+                },
+
+                resetArr: function (data) {
+                    this.saveArr = [];
                     this.saveInLocalStorage();
                 },
 
