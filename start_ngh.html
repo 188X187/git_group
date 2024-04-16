@@ -5,59 +5,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REAL 계산기</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(41, 41, 41);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .Calculator {
+            width: 287px;
+            border: 1px solid #333;
+            background-color: #ccc;
+            padding: 5px;
+        }
+
+        .Calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 65px);
+            grid-auto-rows: 65px;
+            grid-gap:5px;
+        }
+        
+        .Calculator button,
+        .Calculator input {
+            border: 2px solid #333;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .Calculator button:hover,
+        .Calculator input:hover {
+            box-shadow: 1px 1px 2px #333;
+        }
+        
+        .Calculator .operator {
+            background-color: khaki;
+        }
+        .Calculator .operator_Clear {
+            background-color: chocolate;
+        }
+        .Calculator input[type='text']{
+            grid-area: 1 / 5 / 1 / 1;
+            text-align: right;
+            padding: 0 10px;
+        }
+        .operator_Clear{
+            grid-area: 2 / 4 / 2 / 1;;
+        }
+        .Calculator button[value='/']{
+            grid-area: 2 / 5 / 2 / 4;
+        }
+        .Calculator button[value='*']{
+            grid-area: 3 / 5 / 3 / 4;
+        }
+        .Calculator button[value='+']{
+            grid-area: 4 / 5 / 4 / 4;
+        }
+        .Calculator button[value='-']{
+            grid-area: 5 / 5 / 5 / 4;
+        }
+        .Calculator button[value='0']{
+            grid-area: 6 / 2 / 6 / 3;
+        }
+        .Calculator button[value='=']{
+            grid-area: 6 / 3 / 6 / 5;
+        }
+    </style>
+
+
 </head>
 
 <body>
-    <!-- <div class="calculator">
-        <input type="text" name="output" readonly="">
-        <button class="btn" value="1" onclick="save.calcBefore.getBtnData(this)">1</button>
-        <button class="operator" value="+" onclick="save.calcBefore.getBtnData(this)">+</button>
-        <button class="btn" value="2" onclick="save.calcBefore.getBtnData(this)">2</button>
-        <button class="operator_result" value="=" onclick="calculatorInput.btnResultInput(this)">=</button>
-    </div> -->
     <script>
-        // 계산기 DOM - node 제작
-
-        class calculator {
-            constructor() {
-                this.container = document.createElement('div');
-                this.container.className = 'containor';
+        // 계산기 DOM - node 생성 클래스(기본틀)
+        class Calculator {
+            constructor(Elem, ClsN) {
+                this.container = document.createElement(Elem);
+                this.container.className = ClsN;
                 document.body.appendChild(this.container);
             }
-            createNumPad() {
-                this.btnPad = document.createElement('button')
+            // 
+            createNode(Elem, typ, nam, valu, text, ClsN, attr, wage) {
+                this.btnPad = document.createElement(Elem)
+                this.btnPad.value = valu;
+                this.btnPad.className = ClsN;
+                this.btnPad.type = typ;
+                this.btnPad.name = nam;
                 this.container.appendChild(this.btnPad);
-                NumPad.setAttribute('onclick', "save.calcBefore.getBtnData(this)");
-                NumPad.appendChild(PadText);
-            }
-            createInputDisplay() {
-                let inputNode = document.createElement('input')
-                inputNode.type = 'text';
-                inputNode.name = 'output';
-                inputNode.setAttribute('readonly', "");
-                this.container.appendChild(inputNode);
+                this.btnPad.setAttribute(attr, wage);
+                this.PadText = document.createTextNode(text);
+                this.btnPad.appendChild(this.PadText);
             }
         }
-
-        createNumPad() {
-            for (let i = 0; i <= 9; i++) {
-                let NumPad = document.createElement('button');
-                let PadText = document.createTextNode(`${i}`);
-                NumPad.className = 'btn';
-                NumPad.value = `${i}`;
-            }
-        }
-
-        class createInput extends calculator {
+        // 계산기 DOM - node Generator(생성기)
+        class NodeGenerator extends Calculator {
             constructor(){
-                super();
+                super("div", "Calculator");
             }
             
+            createInputDisplay() {
+                super.createNode('input', 'text', 'output', '', '', '', 'readonly', '');
+            }
+            
+            createNumPad() {
+                for(let i = 0; i <= 9; i++){
+                    super.createNode('button', '', '', `${i}`, `${i}`, 'btn', 'onclick', 'save.calcBefore.getBtnData(this)');
+                }
+            }
+            createOperator() {
+                super.createNode('button', '', '', '*', '*', 'operator', 'onclick', 'save.calcBefore.getBtnData(this)');
+                super.createNode('button', '', '', '/', '/', 'operator', 'onclick', 'save.calcBefore.getBtnData(this)');
+                super.createNode('button', '', '', '-', '-', 'operator', 'onclick', 'save.calcBefore.getBtnData(this)');
+                super.createNode('button', '', '', '+', '+', 'operator', 'onclick', 'save.calcBefore.getBtnData(this)');
+                super.createNode('button', '', '', ' ', 'C', 'operator_Clear', 'onclick', 'calculatorInput.btnResultInput(this)');
+                super.createNode('button', '', '', '=', '=', 'operator_result', 'onclick', 'calculatorInput.btnResultInput(this)');
+            }
+
         }
 
-        const extendedCal = new createInput();
+        const extendedCal = new NodeGenerator();
+        extendedCal.createInputDisplay()
         extendedCal.createNumPad();
-        extendedCal.createInputDisplay();
+        extendedCal.createOperator();
+
 
 
         // 계산기 버튼별 클릭시 onclick이벤트 실행 및 값 반환
@@ -72,6 +152,11 @@
                 document.getElementsByName("output")[0].value += buttonTag;
                 return (buttonTag);
             },
+            btnClearInput: function (operator_Clear) {
+                let buttonTag = operator_Clear.value;
+                document.getElementsByName("output")[0].value = '';
+                return (buttonTag);
+            },
             btnResultInput: function (operator_result) {
                 let buttonTag = operator_result.value;
                 document.getElementsByName("output")[0].value += buttonTag;
@@ -79,9 +164,6 @@
             }
         }
         
-
-
-
         // 광훈오빠 입력 데이터 -> save에 저장
         // 저장값은 민규오빠가 출력할 때 사용할 것
 
