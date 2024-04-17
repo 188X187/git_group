@@ -1,5 +1,8 @@
-// import { SaveBefore, SaveAfter } from "./module/save.js";
+import { SaveBefore, SaveAfter } from "./save.js";
 // let calc = new SaveBefore();
+SaveBefore.arr
+
+
 
 // 연산 시작
 // 숫자와 연산 구분 작업
@@ -15,7 +18,7 @@ class Eval {
         let operatorFound = false;
 
         // save.calcBefore.saveArr.forEach(item => {
-        calc.arr.forEach(item => {
+        SaveBefore.arr.forEach(item => {
             // 연산자를 찾았을 때, 그 이후의 값들은 num2에 추가
             if (item === "+" || item === "-" || item === "*" || item === "/") {
                 operatorFound = true;
@@ -36,7 +39,7 @@ class Eval {
         let num2 = Number(this.division().num2);
         let result;
         // save.calcBefore.saveArr.forEach(item => {
-        calc.arr.forEach(item => {
+        SaveBefore.arr.forEach(item => {
             if (item === "+" || item === "-" || item === "*" || item === "/") {
                 switch (item) {
                     case "+":
@@ -59,6 +62,7 @@ class Eval {
                         alert("잘못된 연산입니다."); // 잘못 입력 시
                         break;
                 }
+                // console.log(result)
                 // save.calcAfter.getCalcData(result);
                 return result;
             }
