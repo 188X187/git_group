@@ -12,7 +12,6 @@ const repeatBtn = function () {
         new ButtonTag('', '', '', `${i}`, `${i}`, 'btn');
         const btnNo = document.getElementsByClassName("btn")[i];
         btnNo.addEventListener("click", function(){ 
-            // return btnNo.value; 
             const value = btnNo.value; // 클릭된 버튼의 값
             const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
             const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
@@ -33,12 +32,37 @@ const btnDivide = document.getElementsByClassName('operator')[2];
 const btnMulti = document.getElementsByClassName('operator')[3];
 const btnClear = document.getElementsByClassName('operator_Clear')[0];
 const btnResult = document.getElementsByClassName('operator_result')[0];
-btnPlus.addEventListener("click", function(){ return btnPlus.value; });
-btnMinor.addEventListener("click", function(){ return btnMinor.value; });
-btnDivide.addEventListener("click", function(){ return btnDivide.value;; });
-btnMulti.addEventListener("click", function(){ return btnMulti.value; });
-btnClear.addEventListener("click", function(){ return btnClear.value; });
-btnResult.addEventListener("click", function(){ return btnResult.value; });
+
+btnPlus.addEventListener("click", function(){ 
+    const value = btnPlus.value; // 클릭된 버튼의 값
+    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
+    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+});
+btnMinor.addEventListener("click", function(){ 
+    const value = btnMinor.value; // 클릭된 버튼의 값
+    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
+    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+});
+btnDivide.addEventListener("click", function(){ 
+    const value = btnDivide.value; // 클릭된 버튼의 값
+    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
+    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+});
+btnMulti.addEventListener("click", function(){ 
+    const value = btnMulti.value; // 클릭된 버튼의 값
+    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
+    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+});
+btnClear.addEventListener("click", function(){ 
+    const value = btnClear.value; // 클릭된 버튼의 값
+    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
+    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+});
+btnResult.addEventListener("click", function(){ 
+    const value = btnResult.value; // 클릭된 버튼의 값
+    // const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
+    // const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+});
 
 // 노광훈 작업내역
 
