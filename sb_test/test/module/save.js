@@ -1,21 +1,22 @@
 // save.js
 
 class Save {
-    constructor(data){
+    constructor(data) {
         this.data = data;
         this.arr = [];
     }
 }
 
 class SaveBefore extends Save {
-    constructor(data){
+    constructor(data) {
         super(data);
         this.saveArr = this.saveInArr();
-        this.saveLocalStorage= this.saveInLocalStorage();
+        this.saveLocalStorage = this.saveInLocalStorage();
     }
 
-    saveInArr(){
+    saveInArr() {
         this.arr.push(this.data);
+        // console.log(this.arr)
         return this.arr;
     }
 
@@ -27,13 +28,13 @@ class SaveBefore extends Save {
 }
 
 class SaveAfter extends Save {
-    constructor(data){
+    constructor(data) {
         super(data);
         this.saveArr = this.saveInArr();
-        this.saveLocalStorage= this.saveInLocalStorage();
+        this.saveLocalStorage = this.saveInLocalStorage();
     }
 
-    saveInArr(){
+    saveInArr() {
         this.arr.push(this.data);
         return this.arr;
     }
