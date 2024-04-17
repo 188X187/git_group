@@ -8,8 +8,7 @@ SaveBefore.arr
 // 숫자와 연산 구분 작업
 class Eval {
     constructor() {
-        this.division()
-        this.operator_Cal()
+
     }
     
     division() {
@@ -64,9 +63,10 @@ class Eval {
                 }
                 // console.log(result)
                 // save.calcAfter.getCalcData(result);
-                return result;
             }
         });
+        // console.log(result)
+        return result;
     }
 }
 
