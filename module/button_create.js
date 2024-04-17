@@ -6,7 +6,7 @@ class ParentsGenerator {
         this.tagNode1.type = typ;                                   // valu = tag의 value
         this.tagNode1.name = nam;                                   // text = tag의 text 입력
         this.PadText = document.createTextNode(text);               // ClsN = tag의 className
-        this.tagNode1.appendChild(this.PadText);                   
+        this.tagNode1.appendChild(this.PadText);
     };
 };
 

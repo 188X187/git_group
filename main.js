@@ -3,6 +3,7 @@
 import { SaveBefore, SaveAfter } from "./module/save.js";
 import { printout } from "./module/printout.js";
 import { InputTag, ButtonTag } from './module/button_create.js';
+import Eval from './module/eval.js';
 
 // 노광훈 작업내역
 new InputTag('', '', '', '', '', '', '', '');
@@ -13,9 +14,11 @@ const repeatBtn = function () {
         const btnNo = document.getElementsByClassName("btn")[i];
         btnNo.addEventListener("click", function () {
             const value = btnNo.value; // 클릭된 버튼의 값
-            const saveCalcBefore = new SaveBefore(value);
-            // console.log(saveCalcBefore.saveInArr()) // 버튼 값을 가지고 저장 실행
-            const printoutPlay = new printout(); // 저장 값을 가지고 출력 실행
+            new SaveBefore(value);
+            // console.log(SaveBefore.arr);
+            // 버튼 값을 가지고 저장 실행
+            const printoutPlay = new printout(SaveBefore.arr); // 저장 값을 가지고 출력 실행
+            printoutPlay.beforePrint();
         });
     };
 }
@@ -36,48 +39,56 @@ const btnResult = document.getElementsByClassName('operator_result')[0];
 
 btnPlus.addEventListener("click", function () {
     const value = btnPlus.value; // 클릭된 버튼의 값
-    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
-    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+    new SaveBefore(value);
+    const printoutPlay = new printout(SaveBefore.arr); // 저장 값을 가지고 출력 실행
+    printoutPlay.beforePrint();
+    // console.log(SaveBefore.arr);
 });
 btnMinor.addEventListener("click", function () {
     const value = btnMinor.value; // 클릭된 버튼의 값
-    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
-    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+    new SaveBefore(value);
+    const printoutPlay = new printout(SaveBefore.arr); // 저장 값을 가지고 출력 실행
+    printoutPlay.beforePrint();
+    // console.log(SaveBefore.arr);
 });
 btnDivide.addEventListener("click", function () {
     const value = btnDivide.value; // 클릭된 버튼의 값
-    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
-    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+    new SaveBefore(value);
+    const printoutPlay = new printout(SaveBefore.arr); // 저장 값을 가지고 출력 실행
+    printoutPlay.beforePrint();
+    // console.log(SaveBefore.arr);
 });
 btnMulti.addEventListener("click", function () {
     const value = btnMulti.value; // 클릭된 버튼의 값
-    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
-    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+    new SaveBefore(value);
+    const printoutPlay = new printout(SaveBefore.arr); // 저장 값을 가지고 출력 실행
+    printoutPlay.beforePrint();
+    // console.log(SaveBefore.arr);
 });
 btnClear.addEventListener("click", function () {
     const value = btnClear.value; // 클릭된 버튼의 값
-    const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
-    const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
+    new SaveBefore(value);
+    new SaveAfter(value);
+    const printoutPlay = new printout(SaveBefore.arr); // 저장 값을 가지고 출력 실행
+    printoutPlay.beforePrint();
+    const printoutPlay2 = new printout(SaveAfter.arr); // 저장 값을 가지고 출력 실행
+    printoutPlay2.beforePrint();
+    // console.log(SaveBefore.arr);
 });
 btnResult.addEventListener("click", function () {
-    const value = btnResult.value; // 클릭된 버튼의 값
-    // const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
+    // const value = btnResult.value; // 클릭된 버튼의 값
+    const calcing = new Eval(); // 버튼 값을 가지고 연산 실행
+    const value = calcing.operator_Cal();
+    new SaveAfter(value);
+    const printoutPlay = new printout(SaveAfter.arr); // 저장 값을 가지고 출력 실행
+    printoutPlay.beforePrint();
+    // console.log(SaveAfter.arr);
     // const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
 });
 
 // 노광훈 작업내역
 
 repeatBtn();
-
-
-
-
-
-
-
-
-
-
 
 
 

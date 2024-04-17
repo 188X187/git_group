@@ -16,8 +16,11 @@ class SaveBefore extends Save {
     static arr = [];
 
     saveInArr() {
-        SaveBefore.arr.push(this.data);
-        // console.log(SaveBefore.arr)
+        if(this.data == " "){
+            SaveBefore.arr = [];
+        } else {
+            SaveBefore.arr.push(this.data);
+        }
         return SaveBefore.arr;
     }
 
@@ -38,12 +41,16 @@ class SaveAfter extends Save {
     static arr = [];
 
     saveInArr() {
-        SaveBefore.arr.push(this.data);
+        if (this.data == " ") {
+            SaveAfter.arr = [];
+        } else {
+            SaveAfter.arr.push(this.data);
+        }
         return SaveBefore.arr;
     }
 
     saveInLocalStorage() {
-        const dataReformBefore = SaveBefore.arr;
+        const dataReformBefore = SaveAfter.arr;
         const dataReformAfter = JSON.stringify(dataReformBefore);
         window.localStorage.setItem("calcAfter", dataReformAfter);
     }
