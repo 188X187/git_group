@@ -9,15 +9,15 @@ class Save {
 class SaveBefore extends Save {
     constructor(data) {
         super(data);
-        this.saveArr = this.saveInArr();
-        this.saveLocalStorage = this.saveInLocalStorage();
+        this.saveInArr();
+        this.saveInLocalStorage();
     }
 
     static arr = [];
 
     saveInArr() {
         SaveBefore.arr.push(this.data);
-        console.log(SaveBefore.arr)
+        // console.log(SaveBefore.arr)
         return SaveBefore.arr;
     }
 
