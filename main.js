@@ -3,6 +3,7 @@
 import { SaveBefore, SaveAfter } from "./module/save.js";
 import { printout } from "./module/printout.js";
 import { InputTag, ButtonTag } from './module/button_create.js';
+import  Eval  from './module/eval.js';
 
 // 노광훈 작업내역
 new InputTag('', '', '', '', '', '', '', '');
@@ -60,7 +61,8 @@ btnClear.addEventListener("click", function(){
     const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
 });
 btnResult.addEventListener("click", function(){ 
-    const value = btnResult.value; // 클릭된 버튼의 값
+    // const value = btnResult.value; // 클릭된 버튼의 값
+    const calcing = new Eval(); // 버튼 값을 가지고 연산 실행
     // const saveCalcBefore = new SaveBefore(value); // 버튼 값을 가지고 저장 실행
     // const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
 });
