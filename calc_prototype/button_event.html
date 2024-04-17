@@ -97,31 +97,21 @@
 <body>
     <script>
         // 계산기 DOM - node 생성 클래스(기본틀)
-        /*
-        ★★★ class 매개변수 설명 ★★★
-        Elem = tag명
-        typ = tag의 type 속성
-        valu = tag의 value
-        text = tag의 text 입력
-        ClsN = tag의 className
-        attr = tag의 Atrribute
-        wage = tag의 Atrribute의 값
-        */
         class ParentsGenerator {
-            constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {
-                this.tagNode1 = document.createElement(Elem);
-                this.tagNode1.value = valu;
-                this.tagNode1.className = ClsN;
-                this.tagNode1.type = typ;
-                this.tagNode1.name = nam;
-                this.tagNode1.setAttribute(attr, wage);
-                this.PadText = document.createTextNode(text);
-                this.tagNode1.appendChild(this.PadText);
+            constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {     // ★★★ class 매개변수 설명 ★★★
+                this.tagNode1 = document.createElement(Elem);               // Elem = tag명
+                this.tagNode1.value = valu;                                 // typ = tag의 type 속성
+                this.tagNode1.className = ClsN;                             // nam = tag의 name
+                this.tagNode1.type = typ;                                   // valu = tag의 value
+                this.tagNode1.name = nam;                                   // text = tag의 text 입력
+                this.tagNode1.setAttribute(attr, wage);                     // ClsN = tag의 className
+                this.PadText = document.createTextNode(text);               // attr = tag의 Atrribute    
+                this.tagNode1.appendChild(this.PadText);                    // wage = tag의 Atrribute의 값
             };
         };
 
         // 계산기 DOM - node Generator(생성기)
-        class DivTag extends ParentsGeneator {
+        class DivTag extends ParentsGenerator {
             constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {
                 super('div', typ, nam, valu, text, 'Calculator', 'Attribute', wage);
                 document.body.appendChild(this.tagNode1);
@@ -322,8 +312,6 @@
                 });
             }
         }
-
-
 
 
         // 출력 객체
