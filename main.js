@@ -1,12 +1,11 @@
 // main.js
-
 import { SaveBefore, SaveAfter } from "./module/save.js";
 import { printout } from "./module/printout.js";
-import { InputTag, ButtonTag } from './module/button_create.js';
+import { InputTag, ButtonTag } from './module/button.js';
 import Eval from './module/eval.js';
 
-// 노광훈 작업내역
-new InputTag('', '', '', '', '', '', '', '');
+// Button 생성
+new InputTag('', '', '', '', '', '','','');
 
 const repeatBtn = function () {
     for (let i = 0; i <= 9; i++) {

@@ -95,6 +95,7 @@
 
 </head>
 <body>
+    <input type="text" readonly>
     <script>
         // 계산기 DOM - node 생성 클래스(기본틀)
         class ParentsGenerator {
@@ -119,13 +120,13 @@
         };
         class InputTag extends ParentsGenerator {
             constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {
-                super('input', 'text', 'output', valu, text, ClsN, 'Attribute', wage);
+                super('input', 'text', 'output', valu, text, ClsN, 'Attribute', '');
                 activeDiv.tagNode1.appendChild(this.tagNode1);
             };
         };
         class ButtonTag extends ParentsGenerator {
             constructor(Elem, typ, nam, valu, text, ClsN, attr, wage) {
-                super('button', typ, nam, valu, text, ClsN, attr, wage);
+                super('button', typ, nam, valu, text, ClsN, 'Attribute', wage);
                 activeDiv.tagNode1.appendChild(this.tagNode1);
             };
         };
