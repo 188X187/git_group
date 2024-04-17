@@ -15,16 +15,10 @@ const repeatBtn = function () {
         btnNo.addEventListener("click", function () {
             const value = btnNo.value; // 클릭된 버튼의 값
             new SaveBefore(value);
-<<<<<<< HEAD
             // console.log(SaveBefore.arr);
             // 버튼 값을 가지고 저장 실행
             const printoutPlay = new printout(SaveBefore.arr); // 저장 값을 가지고 출력 실행
             printoutPlay.beforePrint();
-=======
-            console.log(SaveBefore.arr);
-            // 버튼 값을 가지고 저장 실행
-            // const printoutPlay = new printout(saveCalcBefore.arr); // 저장 값을 가지고 출력 실행
->>>>>>> 42e13ea937bd536ec750e2fa66406a34c71ff000
         });
     };
 }
