@@ -262,7 +262,8 @@
             }
         }
 
-        // 연산 
+        // 연산 시작
+        // 숫자와 연산 구분 작업
         let verification = {
             division: function () {
                 let num1 = "";
@@ -284,9 +285,10 @@
                 return { num1, num2 };
             },
 
+            // 연산하여 값 출력
             operator_Cal: function () {
 
-                let num1 = Number(this.division().num1);
+                let num1 = Number(this.division().num1);    // 구분한 숫자들을 연산하기 위해 숫자로 인식하는 작업
                 let num2 = Number(this.division().num2);
                 let result;
                 save.calcBefore.saveArr.forEach(item => {
