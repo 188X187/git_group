@@ -6,13 +6,13 @@ class Save {
         this.saveInArr();
         this.saveInLocalStorage();
     }
+    static arr = [];
 }
 
 class SaveBefore extends Save {
     constructor(data) {
         super(data);
     }
-    static arr = [];
 
     saveInArr() {
         if(this.data == " "){
@@ -34,7 +34,6 @@ class SaveAfter extends Save {
     constructor(data) {
         super(data);
     }
-    static arr = [];
 
     saveInArr() {
         if (this.data == " ") {
