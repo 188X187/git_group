@@ -35,8 +35,8 @@ new ButtonTag('', '', '', '=', '=', 'operator_result');
 // const btnMinor = document.getElementsByClassName('operator')[1];
 // const btnDivide = document.getElementsByClassName('operator')[2];
 // const btnMulti = document.getElementsByClassName('operator')[3];
-// const btnClear = document.getElementsByClassName('operator_Clear')[0];
-// const btnResult = document.getElementsByClassName('operator_result')[0];
+const btnClear = document.getElementsByClassName('operator_Clear')[0];
+const btnResult = document.getElementsByClassName('operator_result')[0];
 
 
 // 연산자 버튼 클릭 이벤트
