@@ -3,23 +3,21 @@
 class Save {
     constructor(data) {
         this.data = data;
-        this.saveInArr();
-        this.saveInLocalStorage();
     }
 }
 
 class SaveBefore extends Save {
     constructor(data) {
         super(data);
+        this.saveArr = this.saveInArr();
+        this.saveLocalStorage = this.saveInLocalStorage();
     }
+    
     static arr = [];
 
     saveInArr() {
-        if(this.data == " "){
-            SaveBefore.arr = [];
-        } else {
-            SaveBefore.arr.push(this.data);
-        }
+        SaveBefore.arr.push(this.data);
+        console.log(SaveBefore.arr)
         return SaveBefore.arr;
     }
 
@@ -33,16 +31,15 @@ class SaveBefore extends Save {
 class SaveAfter extends Save {
     constructor(data) {
         super(data);
+        this.saveArr = this.saveInArr();
+        this.saveLocalStorage = this.saveInLocalStorage();
     }
+
     static arr = [];
 
     saveInArr() {
-        if (this.data == " ") {
-            SaveAfter.arr = [];
-        } else {
-            SaveAfter.arr.push(this.data);
-        }
-        return SaveBefore.arr;
+        SaveAfter.arr.push(this.data);
+        return SaveAfter.arr;
     }
 
     saveInLocalStorage() {
