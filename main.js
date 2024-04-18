@@ -14,8 +14,7 @@ const repeatBtn = function () {
         btnNo.addEventListener("click", function () {
             const value = btnNo.value; // 클릭된 버튼의 값
             new SaveBefore(value);
-            const printoutPlay = new Printout(SaveBefore.arr); // 저장 값을 가지고 출력 실행
-            printoutPlay.disPrint();
+            new Printout(SaveBefore.arr).disPrint();
         });
     };
 }
@@ -37,8 +36,7 @@ const opBtn = function () {
         op.addEventListener("click", function () {
             const value = op.value;
             new SaveBefore(value);
-            const printoutPlay = new Printout(SaveBefore.arr);
-            printoutPlay.disPrint();
+            new Printout(SaveBefore.arr).disPrint();
         })
 
     }
@@ -49,18 +47,15 @@ btnClear.addEventListener("click", function () {
     const value = btnClear.value; // 클릭된 버튼의 값
     new SaveBefore(value);
     new SaveAfter(value);
-    const printoutPlay = new Printout(SaveBefore.arr); // 저장 값을 가지고 출력 실행
-    printoutPlay.disPrint();
-    const printoutPlay2 = new Printout(SaveAfter.arr); // 저장 값을 가지고 출력 실행
-    printoutPlay2.disPrint();
+    new Printout(SaveBefore.arr).disPrint();
+    new Printout(SaveAfter.arr).disPrint();
 });
 
 btnResult.addEventListener("click", function () {
     const calcing = new Eval(); // 버튼 값을 가지고 연산 실행
     const value = calcing.operator_Cal();
     new SaveAfter(value);
-    const printoutPlay2 = new Printout(SaveAfter.arr); // 저장 값을 가지고 출력 실행
-    printoutPlay2.disPrint();
+    new Printout(SaveAfter.arr).disPrint();
 });
 
 repeatBtn();
