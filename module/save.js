@@ -42,7 +42,7 @@ class SaveAfter extends Save {
         } else {
             SaveAfter.arr.push(this.data);
         }
-        return SaveBefore.arr;
+        return SaveAfter.arr;
     }
 
     saveInLocalStorage() {
