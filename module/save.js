@@ -3,16 +3,15 @@
 class Save {
     constructor(data) {
         this.data = data;
+        this.saveInArr();
+        this.saveInLocalStorage();
     }
 }
 
 class SaveBefore extends Save {
     constructor(data) {
         super(data);
-        this.saveInArr();
-        this.saveInLocalStorage();
     }
-
     static arr = [];
 
     saveInArr() {
@@ -34,10 +33,7 @@ class SaveBefore extends Save {
 class SaveAfter extends Save {
     constructor(data) {
         super(data);
-        this.saveArr = this.saveInArr();
-        this.saveLocalStorage = this.saveInLocalStorage();
     }
-
     static arr = [];
 
     saveInArr() {
