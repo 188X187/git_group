@@ -14,7 +14,7 @@ class SaveBefore extends Save {
     }
     static arr = [];
     static keyText = 'calcBefore';
-    static Keycount = 0;
+    static KeyCount = 0;
 
     saveInArr() {
         if (this.data == " ") {
@@ -28,12 +28,12 @@ class SaveBefore extends Save {
     saveInLocalStorage() {
         const dataReformBefore = SaveBefore.arr;
         const dataReformAfter = JSON.stringify(dataReformBefore);
-        const key = `${SaveBefore.keyText}${SaveBefore.Keycount}`;
+        const key = `${SaveBefore.keyText}${SaveBefore.KeyCount}`;
         window.localStorage.setItem(key, dataReformAfter);
     }
 
     static increaseKeyCount() {
-        SaveBefore.Keycount++;
+        SaveBefore.KeyCount++;
     }
 }
 
@@ -44,7 +44,7 @@ class SaveAfter extends Save {
 
     static arr = [];
     static keyText = 'calcAfter';
-    static Keycount = 0;
+    static KeyCount = 0;
 
     saveInArr() {
         if (this.data == " ") {
@@ -57,12 +57,12 @@ class SaveAfter extends Save {
 
     saveInLocalStorage() {
         const dataReformAfter = SaveAfter.arr;
-        const key = `${SaveAfter.keyText}${SaveAfter.Keycount}`;
+        const key = `${SaveAfter.keyText}${SaveAfter.KeyCount}`;
         window.localStorage.setItem(key, JSON.stringify(dataReformAfter));
     }
 
     static increaseKeyCount() {
-        SaveAfter.Keycount++;
+        SaveAfter.KeyCount++;
     }
 }
 
