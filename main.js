@@ -45,7 +45,7 @@ const opBtn = function () {
     }
 }
 
-// 연산자 버튼 클릭 
+// 지우기 버튼 클릭 
 btnClear.addEventListener("click", function () {
     const value = btnClear.value; // 클릭된 버튼의 값
     new SaveBefore(value);
@@ -54,11 +54,16 @@ btnClear.addEventListener("click", function () {
     new Printout(SaveAfter.arr).disPrint();
 });
 
+// = 버튼 클릭 
 btnResult.addEventListener("click", function () {
     const calcing = new Eval(); // 버튼 값을 가지고 연산 실행
     const value = calcing.operator_Cal();
     new SaveAfter(value);
     new Printout(SaveAfter.arr).disPrint();
+    
+    // '=' 버튼을 눌렀을 때 카운트 증가
+    SaveBefore.increaseKeyCount();
+    SaveAfter.increaseKeyCount();
     
     // 누적 연산 코드
     new SaveBefore(' ') // 계산 전 배열 초기화
