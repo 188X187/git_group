@@ -5,11 +5,11 @@ import Eval from './module/eval.js';
 import { Printout } from "./module/printout.js";
 
 // Button 생성
-new InputTag('', '', '', '', '', '', '', '');
+new InputTag('', '', '', '', '', '', '', '');   // 입력 태그 생성, 계산 결과를 표시할 곳
 
-const repeatBtn = function () {
-    for (let i = 0; i <= 9; i++) {
-        new ButtonTag('', '', '', `${i}`, `${i}`, 'btn');
+const repeatBtn = function () {     // 함수는 숫자 버튼을 생성합니다. 
+    for (let i = 0; i <= 9; i++) {  // 0부터 9까지의 버튼을 생성하고, 각 버튼에 클릭 이벤트를 추가하여 숫자를 저장하고 화면에 표시
+        new ButtonTag('', '', '', `${i}`, `${i}`, 'btn');   
         const btnNo = document.getElementsByClassName("btn")[i];
         btnNo.addEventListener("click", function () {
             const value = btnNo.value; // 클릭된 버튼의 값
@@ -19,24 +19,24 @@ const repeatBtn = function () {
     };
 }
 
-new ButtonTag('', '', '', '+', '+', 'operator');
+new ButtonTag('', '', '', '+', '+', 'operator');    // 연산자와 'AC' 그리고 '=' 버튼을 생성
 new ButtonTag('', '', '', '-', '-', 'operator');
 new ButtonTag('', '', '', '/', '/', 'operator');
 new ButtonTag('', '', '', '*', '*', 'operator');
 new ButtonTag('', '', '', ' ', 'AC', 'operator_Clear');
 new ButtonTag('', '', '', '=', '=', 'operator_result');
 
-const btnClear = document.getElementsByClassName('operator_Clear')[0];
+const btnClear = document.getElementsByClassName('operator_Clear')[0]; //'AC'버튼과 '='버튼에 대한 참조를 가져옴
 const btnResult = document.getElementsByClassName('operator_result')[0];
 
 // 연산자 버튼 클릭 이벤트
-const opBtn = function () {
+const opBtn = function () {  
     for (let i = 0; i < 4; i++) {
         const op = document.getElementsByClassName("operator")[i];
-        op.addEventListener("click", function () {
+        op.addEventListener("click", function () {  // 'opBtn' 함수는 연산자 버튼에 클릭 이벤트를 추가
             const value = op.value;
             new SaveBefore(value);
-            new Printout(SaveBefore.arr).disPrint();
+            new Printout(SaveBefore.arr).disPrint();    // 연산자를 클릭하면 해당 연산자를 저장하고 화면에 표시
         })
         
     }
@@ -54,7 +54,7 @@ btnClear.addEventListener("click", function () {
 // = 버튼 클릭 
 btnResult.addEventListener("click", function () {
     const calcing = new Eval(); // 버튼 값을 가지고 연산 실행
-    const value = calcing.operator_Cal();
+    const value = calcing.operatorCal();
     new SaveAfter(value);
     new Printout(SaveAfter.arr).disPrint();
     

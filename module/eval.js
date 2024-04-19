@@ -32,7 +32,7 @@ class Eval {
         return { num1, num2 };
     }
     // 연산하여 값 출력
-    operator_Cal() {
+    operatorCal() {
         let num1 = Number(this.division().num1);    // 구분한 숫자들을 연산하기 위해 숫자로 인식하는 작업
         let num2 = Number(this.division().num2);
         let result;
