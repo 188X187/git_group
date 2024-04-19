@@ -1,22 +1,24 @@
-// save.js
+// // save.js
 
 class Save {
     constructor(data) {
         this.data = data;
+        this.saveInArr();
+        this.saveInLocalStorage();
     }
 }
 
 class SaveBefore extends Save {
     constructor(data) {
         super(data);
-        this.saveInArr();
-        this.saveInLocalStorage();
     }
 
     static arr = [];
+    static keyText = 'calcBefore';
+    static KeyCount = 0;
 
     saveInArr() {
-        if(this.data == " "){
+        if (this.data == " ") {
             SaveBefore.arr = [];
         } else {
             SaveBefore.arr.push(this.data);
@@ -25,20 +27,24 @@ class SaveBefore extends Save {
     }
 
     saveInLocalStorage() {
-        const dataReformBefore = SaveBefore.arr;
-        const dataReformAfter = JSON.stringify(dataReformBefore);
-        window.localStorage.setItem("calcBefore", dataReformAfter);
+        const dataReform = SaveBefore.arr.join(''); // 배열을 문자열로 합침
+        const key = `${SaveBefore.keyText}${SaveBefore.KeyCount}`;
+        window.localStorage.setItem(key, dataReform);
+    }
+
+    static increaseKeyCount() {
+        SaveBefore.KeyCount++;
     }
 }
 
 class SaveAfter extends Save {
     constructor(data) {
         super(data);
-        this.saveArr = this.saveInArr();
-        this.saveLocalStorage = this.saveInLocalStorage();
     }
 
     static arr = [];
+    static keyText = 'calcAfter';
+    static KeyCount = 0;
 
     saveInArr() {
         if (this.data == " ") {
@@ -46,68 +52,20 @@ class SaveAfter extends Save {
         } else {
             SaveAfter.arr.push(this.data);
         }
-        return SaveBefore.arr;
+        return SaveAfter.arr;
     }
 
     saveInLocalStorage() {
-        const dataReformBefore = SaveAfter.arr;
-        const dataReformAfter = JSON.stringify(dataReformBefore);
-        window.localStorage.setItem("calcAfter", dataReformAfter);
+        const dataReform = SaveAfter.arr.join(''); // 배열을 문자열로 합침
+        const key = `${SaveAfter.keyText}${SaveAfter.KeyCount}`;
+        window.localStorage.setItem(key, dataReform);
+    }
+
+    static increaseKeyCount() {
+        SaveAfter.KeyCount++;
     }
 }
 
+
 export { SaveBefore, SaveAfter };
 export default Save;
-
-
-// class Save {
-//     constructor(data) {
-//         this.data = data;
-//     }
-// }
-
-// class SaveBefore extends Save {
-//     constructor(data) {
-//         super(data);
-//         this.saveArr = this.saveInArr();
-//         this.saveLocalStorage = this.saveInLocalStorage();
-//     }
-    
-//     static arr = [];
-
-//     saveInArr() {
-//         SaveBefore.arr.push(this.data);
-//         console.log(SaveBefore.arr)
-//         return SaveBefore.arr;
-//     }
-
-//     saveInLocalStorage() {
-//         const dataReformBefore = SaveBefore.arr;
-//         const dataReformAfter = JSON.stringify(dataReformBefore);
-//         window.localStorage.setItem("calcBefore", dataReformAfter);
-//     }
-// }
-
-// class SaveAfter extends Save {
-//     constructor(data) {
-//         super(data);
-//         this.saveArr = this.saveInArr();
-//         this.saveLocalStorage = this.saveInLocalStorage();
-//     }
-
-//     static arr = [];
-
-//     saveInArr() {
-//         SaveAfter.arr.push(this.data);
-//         return SaveAfter.arr;
-//     }
-
-//     saveInLocalStorage() {
-//         const dataReformBefore = SaveAfter.arr;
-//         const dataReformAfter = JSON.stringify(dataReformBefore);
-//         window.localStorage.setItem("calcAfter", dataReformAfter);
-//     }
-// }
-
-// export { SaveBefore, SaveAfter };
-// export default Save;
