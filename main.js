@@ -1,6 +1,12 @@
 // main.js
+<<<<<<< HEAD
+import { SaveBefore, SaveAfter } from "./module/save.js";
+import { Printout } from "./module/printout.js";
+import { InputTag, ButtonTag } from './module/button.js';
+=======
 import { InputTag, ButtonTag } from './module/button.js';
 import { SaveBefore, SaveAfter } from "./module/save.js";
+>>>>>>> 1c8da05f0e19ccbf787047bba761059e92238c71
 import Eval from './module/eval.js';
 import { Printout } from "./module/printout.js";
 
