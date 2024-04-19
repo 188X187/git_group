@@ -2,7 +2,7 @@
 import { InputTag, ButtonTag } from './module/button.js';
 import { SaveBefore, SaveAfter } from "./module/save.js";
 import Eval from './module/eval.js';
-import { Printout } from "./module/printout.js";
+import { PrintOut } from "./module/printout.js";
 
 // Button 생성
 new InputTag('', '', '', '', '', '', '', '');
@@ -14,7 +14,7 @@ const repeatBtn = function () {
         btnNo.addEventListener("click", function () {
             const value = btnNo.value; // 클릭된 버튼의 값
             new SaveBefore(value);
-            new Printout(SaveBefore.arr).disPrint();
+            new PrintOut(SaveBefore.arr).disPrint();
         });
     };
 }
@@ -36,7 +36,7 @@ const opBtn = function () {
         op.addEventListener("click", function () {
             const value = op.value;
             new SaveBefore(value);
-            new Printout(SaveBefore.arr).disPrint();
+            new PrintOut(SaveBefore.arr).disPrint();
         })
         
     }
@@ -47,8 +47,8 @@ btnClear.addEventListener("click", function () {
     const value = btnClear.value; // 클릭된 버튼의 값
     new SaveBefore(value);
     new SaveAfter(value);
-    new Printout(SaveBefore.arr).disPrint();
-    new Printout(SaveAfter.arr).disPrint();
+    new PrintOut(SaveBefore.arr).disPrint();
+    new PrintOut(SaveAfter.arr).disPrint();
 });
 
 // = 버튼 클릭 
@@ -56,7 +56,7 @@ btnResult.addEventListener("click", function () {
     const calcing = new Eval(); // 버튼 값을 가지고 연산 실행
     const value = calcing.operator_Cal();
     new SaveAfter(value);
-    new Printout(SaveAfter.arr).disPrint();
+    new PrintOut(SaveAfter.arr).disPrint();
     
     // '=' 버튼을 눌렀을 때 카운트 증가
     SaveBefore.increaseKeyCount();
