@@ -12,6 +12,7 @@ class SaveBefore extends Save {
     constructor(data) {
         super(data);
     }
+
     static arr = [];
     static keyText = 'calcBefore';
     static KeyCount = 0;
@@ -26,10 +27,9 @@ class SaveBefore extends Save {
     }
 
     saveInLocalStorage() {
-        const dataReformBefore = SaveBefore.arr;
-        const dataReformAfter = JSON.stringify(dataReformBefore);
+        const dataReform = SaveBefore.arr.join(''); // 배열을 문자열로 합침
         const key = `${SaveBefore.keyText}${SaveBefore.KeyCount}`;
-        window.localStorage.setItem(key, dataReformAfter);
+        window.localStorage.setItem(key, dataReform);
     }
 
     static increaseKeyCount() {
@@ -56,9 +56,9 @@ class SaveAfter extends Save {
     }
 
     saveInLocalStorage() {
-        const dataReformAfter = SaveAfter.arr;
+        const dataReform = SaveAfter.arr.join(''); // 배열을 문자열로 합침
         const key = `${SaveAfter.keyText}${SaveAfter.KeyCount}`;
-        window.localStorage.setItem(key, JSON.stringify(dataReformAfter));
+        window.localStorage.setItem(key, dataReform);
     }
 
     static increaseKeyCount() {
