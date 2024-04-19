@@ -36,11 +36,7 @@ const opBtn = function () {
         op.addEventListener("click", function () {  // 'opBtn' 함수는 연산자 버튼에 클릭 이벤트를 추가
             const value = op.value;
             new SaveBefore(value);
-<<<<<<< HEAD
-            new Printout(SaveBefore.arr).disPrint();    // 연산자를 클릭하면 해당 연산자를 저장하고 화면에 표시
-=======
             new PrintOut(SaveBefore.arr).disPrint();
->>>>>>> 0ee4f50f92c6ebb353bf3625cc8bf2e9a45c1973
         })
         
     }
