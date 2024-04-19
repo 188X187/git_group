@@ -37,11 +37,8 @@ const opBtn = function () {
             const value = op.value;
             new SaveBefore(value);
             new Printout(SaveBefore.arr).disPrint();
-            
-            // 누적 연산 코드 - 버그 
-            new SaveAfter(' ') // 계산 후 배열 초기화
         })
-
+        
     }
 }
 
@@ -68,6 +65,7 @@ btnResult.addEventListener("click", function () {
     // 누적 연산 코드
     new SaveBefore(' ') // 계산 전 배열 초기화
     new SaveBefore(value) // 계산 전에 계산 후 값 넣어둠->후에 연산자 추가입력하면 "계산후 값 + 연산자" 일케 출력됨)
+    new SaveAfter(' ') // 계산 후 배열 초기화
 });
 
 repeatBtn();
