@@ -1,12 +1,7 @@
 // main.js
 import { SaveBefore, SaveAfter } from "./module/save.js";
-<<<<<<< HEAD
-import { printout } from "./module/printout.js";
-import { InputTag, ButtonTag } from './module/button.js';
-=======
 import { Printout } from "./module/printout.js";
-import { InputTag, ButtonTag } from './module/button_create.js';
->>>>>>> 049b23c33a7e5098bd9c776f7aedbd0181ec83e3
+import { InputTag, ButtonTag } from './module/button.js';
 import Eval from './module/eval.js';
 
 // Button 생성
