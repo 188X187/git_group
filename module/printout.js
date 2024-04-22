@@ -1,7 +1,7 @@
 // 출력 클래스화
-export class Printout {
+export class PrintOut {
     constructor(input) {
-        this.input = input;   // this.test 안에 가져온 배열 넣기
+        this.input = input;   // this.input 안에 가져온 배열 넣기
     }
 
     // 배열에서 값 가져오는 메서드
