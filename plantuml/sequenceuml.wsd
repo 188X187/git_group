@@ -1,0 +1,27 @@
+@startuml 순차다이어그램
+actor User
+participant "InputTag" as Input
+participant "ButtonTag(=)" as BEquals
+participant "SaveBefore" as SB
+participant "Eval" as Eval
+participant "SaveAfter" as SA
+participant "Printout" as Print
+' =를 클릭하여 1+2의 계산 결과 3을 얻는 과정
+User -> BEquals : click()
+activate BEquals
+BEquals -> Eval : new Eval()
+activate Eval
+Eval -> Eval : division()
+Eval -> Eval : operator_Cal()
+Eval --> BEquals : result = 3
+deactivate Eval
+BEquals -> SA : new SaveAfter(3)
+activate SA
+SA --> BEquals : save '3'
+deactivate SA
+BEquals -> Print : new Printout(SaveAfter.arr)
+activate Print
+Print -> Input : display '3'
+deactivate Print
+deactivate BEquals
+@enduml

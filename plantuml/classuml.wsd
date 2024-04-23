@@ -1,0 +1,50 @@
+@startuml team3
+class ParentsGenerator {
+    +tagNode1: HTMLElement
+    +PadText: Text
+    +construct(Elem, typ, nam, valu, text, ClsN, attr, wage)
+}
+class DivTag {
+    +construct(Elem, typ, nam, valu, text, ClsN, attr, wage)
+}
+ParentsGenerator <|-- DivTag : extends
+class InputTag {
+    +construct(Elem, typ, nam, valu, text, ClsN, attr, wage)
+}
+ParentsGenerator <|-- InputTag : extends
+class ButtonTag {
+    +construct(Elem, typ, nam, valu, text, ClsN, attr, wage)
+}
+ParentsGenerator <|-- ButtonTag : extends
+class Save {
+    +data: String
+    +saveInArr(): Array
+    +saveInLocalStorage(): void
+}
+class SaveBefore {
+    -arr: Array
+    -keyText: String
+    -KeyCount: int
+    +increaseKeyCount(): void
+    +construct(data)
+}
+Save <|-- SaveBefore : extends
+class SaveAfter {
+    arr: Array
+    keyText: String
+    KeyCount: int
+    increaseKeyCount(): void
+    construct(data)
+}
+Save <|-- SaveAfter : extends
+class Eval {
+    +division(): Object
+    +operator_Cal(): Number
+}
+class Printout {
+    -input: Array
+    +getNum(): String
+    +disPrint(): void
+    +construct(input)
+}
+@enduml
