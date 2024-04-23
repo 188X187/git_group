@@ -10,7 +10,7 @@ class Eval {
     constructor() {
 
     }
-    
+
     division() {
         let num1 = "";
         let num2 = "";
@@ -36,7 +36,7 @@ class Eval {
         // let num1 = Number(this.division().num1);    // 구분한 숫자들을 연산하기 위해 숫자로 인식하는 작업
         // let num2 = Number(this.division().num2);
 
-        let { num1:num1NoNum, num2:num2NoNum} = this.division();
+        let { num1: num1NoNum, num2: num2NoNum } = this.division();
         let num1 = Number(num1NoNum);
         let num2 = Number(num2NoNum);
 
