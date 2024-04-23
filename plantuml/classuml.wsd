@@ -2,18 +2,18 @@
 class ParentsGenerator {
     +tagNode1: HTMLElement
     +PadText: Text
-    +construct(Elem, typ, nam, valu, text, ClsN, attr, wage)
+    +construct(Elem, valu, text, ClsN)
 }
 class DivTag {
-    +construct(Elem, typ, nam, valu, text, ClsN, attr, wage)
+    +construct()
 }
 ParentsGenerator <|-- DivTag : extends
 class InputTag {
-    +construct(Elem, typ, nam, valu, text, ClsN, attr, wage)
+    +construct()
 }
 ParentsGenerator <|-- InputTag : extends
 class ButtonTag {
-    +construct(Elem, typ, nam, valu, text, ClsN, attr, wage)
+    +construct(Elem, valu, text, ClsN)
 }
 ParentsGenerator <|-- ButtonTag : extends
 class Save {
