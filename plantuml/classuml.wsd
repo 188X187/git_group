@@ -39,9 +39,9 @@ class SaveAfter {
 Save <|-- SaveAfter : extends
 class Eval {
     +division(): Object
-    +operator_Cal(): Number
+    +operatorCal(): Number
 }
-class Printout {
+class PrintOut {
     -input: Array
     +getNum(): String
     +disPrint(): void
