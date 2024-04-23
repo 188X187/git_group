@@ -18,7 +18,7 @@ class ButtonTag {
 ParentsGenerator <|-- ButtonTag : extends
 class Save {
     +data: String
-    +saveInArr(): Array
+    +saveInArr(): void
     +saveInLocalStorage(): void
 }
 class SaveBefore {
